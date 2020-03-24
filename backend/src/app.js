@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
+import cors from "cors";
 
 import routes from "./routes";
 import middlwares from "./lib/middlewares";
@@ -14,6 +15,7 @@ class App {
   }
 
   middlewares() {
+    this.server.use(cors());
     this.server.use(express.json());
     this.server.use(morgan("common"));
     this.server.use(helmet());
