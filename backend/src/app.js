@@ -3,6 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 import routes from "./routes";
+import middlwares from "./lib/middlewares";
 
 class App {
   constructor() {
@@ -21,20 +22,8 @@ class App {
   routes() {
     this.server.use(routes);
 
-    this.server.use((req, res, next) => {
-      const error = new Error(`Route Not Found - ${req.originalUrl}`);
-      res.status(404);
-      next(error);
-    });
-
-    this.server.use((error, req, res, next) => {
-      const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
-      res.status(statusCode);
-      res.json({
-        message: error.message,
-        stack: process.env.NODE_ENV === "production" ? "Yeah" : error.stack
-      });
-    });
+    this.server.use(middlwares.notFound);
+    this.server.use(middlwares.errorHandler);
   }
 }
 
