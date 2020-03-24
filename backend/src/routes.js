@@ -1,7 +1,7 @@
-const { Router } = require("express");
-const crypto = require("crypto");
+import { Router } from "express";
+import crypto from "crypto";
 
-const connection = require("./database/connection");
+import connection from "./database/connection";
 
 const routes = new Router();
 
@@ -22,4 +22,4 @@ routes.post("/ongs", async (req, res) => {
   return res.json({ id });
 });
 
-module.exports = routes;
+export default routes;

@@ -12,5 +12,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.2",
     "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "sucrase": "^3.12.1"
   }
 }
