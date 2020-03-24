@@ -16,6 +16,10 @@ class App {
     this.server.use(express.json());
     this.server.use(morgan("common"));
     this.server.use(helmet());
+  }
+
+  routes() {
+    this.server.use(routes);
 
     this.server.use((req, res, next) => {
       const error = new Error(`Route Not Found - ${req.originalUrl}`);
@@ -31,10 +35,6 @@ class App {
         stack: process.env.NODE_ENV === "production" ? "Yeah" : error.stack
       });
     });
-  }
-
-  routes() {
-    this.server.use(routes);
   }
 }
 
