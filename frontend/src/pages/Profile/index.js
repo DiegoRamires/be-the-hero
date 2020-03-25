@@ -61,7 +61,7 @@ export default function Profile() {
             <strong>CASO:</strong>
             <p>{incident.title}</p>
 
-            <strong>DESCRIÇÂO:</strong>
+            <strong>DESCRIÇÃO:</strong>
             <p>{incident.description}</p>
 
             <strong>VALOR:</strong>
